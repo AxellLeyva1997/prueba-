@@ -1,0 +1,24 @@
+<div class="center-block large-container">
+<h1><%=@article.title%></h1>
+<div>
+    <p>Escrito por: <strong><%= @article.user.email %></strong></p>
+     
+     <%= image_tag (@article.obtenerimagenuser), height:30 %>
+     
+</div>
+<div>
+    <%=@article.content%>
+</div>
+<div class="margin-top">
+    <p class="label">tags</p>
+    <% @article.categories.each do |category| %>
+        <span class="badge badge-pill padding" style="background-color:<%= category.color %>"> 
+            <%= link_to category.title, category, class:"text-white" %>
+        </span>
+    <%end%>
+<div>
+    <%=link_to "Editar artículo", edit_article_path %>
+    <%=link_to "Eliminar artículo", @article, method: :delete %>
+    
+</div>
+</div>
